@@ -157,22 +157,27 @@ namespace spwho1
                 Blkby = row.Cells["BlkBy"].Value?.ToString(),
                 Command = row.Cells["Command"].Value?.ToString()
             };
-        }   
+        }
 
-       
+
 
         private void btnKill_Click(object sender, EventArgs e)
-        {
+        {            
+
             if (selectedSession == null)
             {
                 MessageBox.Show("종료할 세션을 선택하세요.");
                 return;
             }
 
-            if (selectedSession.Command != null &&
-                selectedSession.Command.ToUpper().Contains("UPDATE"))
+            string command = selectedSession.Command?.ToUpper() ?? "";
+
+            if (command.Contains("UPDATE") ||
+                command.Contains("INSERT") ||
+                command.Contains("DELETE") ||
+                command.Contains("MERGE"))
             {
-                MessageBox.Show("UPDATE 작업 중인 세션은 종료할 수 없습니다.");
+                MessageBox.Show("작업 중인 세션은 종료할 수 없습니다.");
                 return;
             }
 
