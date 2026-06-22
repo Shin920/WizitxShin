@@ -204,5 +204,73 @@ namespace spwho1
                 dac.Dispose();
             }
         }
+
+        private void btnRollback_Click(object sender, EventArgs e)
+        {
+            string prno = txtPrno.Text.Trim();
+
+            if (prno.Length != 8 || !prno.All(char.IsDigit))
+            {
+                MessageBox.Show("제조번호는 숫자 8자리로 입력하세요.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                $"제조번호 [{prno}] 기준으로 데이터를 초기화하시겠습니까?",
+                "확인",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result != DialogResult.Yes)
+                return;
+
+            using (SpDAC dac = new SpDAC())
+            {
+                try
+                {
+                    int rows = dac.ResetPrnoData(prno);
+                    MessageBox.Show($"처리 완료되었습니다.\n영향받은 행 수: {rows}");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("처리 실패: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            string pdno = txtPdno.Text.Trim();
+
+            if (pdno.Length != 11 || !pdno.All(char.IsDigit))
+            {
+                MessageBox.Show("생산의뢰번호 11자리로 입력하세요.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                $"의뢰번호 [{pdno}] 기준으로 데이터를 초기화하시겠습니까?",
+                "확인",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result != DialogResult.Yes)
+                return;
+
+            using (SpDAC dac = new SpDAC())
+            {
+                try
+                {
+                    int rows = dac.CancelByPdno(pdno);
+                    MessageBox.Show($"처리 완료되었습니다.\n영향받은 행 수: {rows}");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("처리 실패: " + ex.Message);
+                }
+            }
+        }
     }
 }
