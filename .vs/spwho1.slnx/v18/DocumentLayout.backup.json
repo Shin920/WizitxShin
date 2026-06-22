@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\Shin\\source\\repos\\spwho1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AC722844-B4BD-4040-A2BF-9B8EECA4D459}|spwho1\\spwho1.csproj|C:\\Users\\Shin\\source\\repos\\spwho1\\spwho1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{AC722844-B4BD-4040-A2BF-9B8EECA4D459}|spwho1\\spwho1.csproj|c:\\users\\shin\\source\\repos\\spwho1\\spwho1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{AC722844-B4BD-4040-A2BF-9B8EECA4D459}|spwho1\\spwho1.csproj|solutionrelative:spwho1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{AC722844-B4BD-4040-A2BF-9B8EECA4D459}|spwho1\\spwho1.csproj|solutionrelative:spwho1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AC722844-B4BD-4040-A2BF-9B8EECA4D459}|spwho1\\spwho1.csproj|c:\\users\\shin\\source\\repos\\spwho1\\spwho1\\dac\\spdac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{AC722844-B4BD-4040-A2BF-9B8EECA4D459}|spwho1\\spwho1.csproj|C:\\Users\\Shin\\source\\repos\\spwho1\\spwho1\\dac\\spdac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AC722844-B4BD-4040-A2BF-9B8EECA4D459}|spwho1\\spwho1.csproj|solutionrelative:spwho1\\dac\\spdac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -46,8 +46,8 @@
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Shin\\source\\repos\\spwho1\\spwho1\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "spwho1\\Form1.Designer.cs",
-              "ToolTip": "C:\\Users\\Shin\\source\\repos\\spwho1\\spwho1\\Form1.Designer.cs",
-              "RelativeToolTip": "spwho1\\Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\Shin\\source\\repos\\spwho1\\spwho1\\Form1.Designer.cs*",
+              "RelativeToolTip": "spwho1\\Form1.Designer.cs*",
               "ViewState": "AgIAAEQAAAAAAAAAAADgv1UAAABwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-22T01:33:05.214Z",
@@ -72,8 +72,8 @@
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\Shin\\source\\repos\\spwho1\\spwho1\\Form1.cs",
               "RelativeDocumentMoniker": "spwho1\\Form1.cs",
-              "ToolTip": "C:\\Users\\Shin\\source\\repos\\spwho1\\spwho1\\Form1.cs",
-              "RelativeToolTip": "spwho1\\Form1.cs",
+              "ToolTip": "C:\\Users\\Shin\\source\\repos\\spwho1\\spwho1\\Form1.cs*",
+              "RelativeToolTip": "spwho1\\Form1.cs*",
               "ViewState": "AgIAAKwAAAAAAAAAAAAnwAsBAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-18T07:05:26.079Z",
@@ -89,8 +89,7 @@
               "RelativeToolTip": "spwho1\\DAC\\CommonDAC.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-18T07:01:31.075Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-18T07:01:31.075Z"
             },
             {
               "$type": "Document",
@@ -102,8 +101,7 @@
               "RelativeToolTip": "spwho1\\DAC\\SpDAC.cs",
               "ViewState": "AgIAAJ0AAAAAAAAAAAAAAI0AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-18T07:01:30.047Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-18T07:01:30.047Z"
             },
             {
               "$type": "Document",
@@ -111,8 +109,8 @@
               "Title": "Form1.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\Users\\Shin\\source\\repos\\spwho1\\spwho1\\Form1.cs",
               "RelativeDocumentMoniker": "spwho1\\Form1.cs",
-              "ToolTip": "C:\\Users\\Shin\\source\\repos\\spwho1\\spwho1\\Form1.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "spwho1\\Form1.cs [\uB514\uC790\uC778]",
+              "ToolTip": "C:\\Users\\Shin\\source\\repos\\spwho1\\spwho1\\Form1.cs [\uB514\uC790\uC778]*",
+              "RelativeToolTip": "spwho1\\Form1.cs [\uB514\uC790\uC778]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-18T06:39:54.275Z",
               "EditorCaption": " [\uB514\uC790\uC778]"

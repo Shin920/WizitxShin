@@ -46,6 +46,9 @@
             this.btnRollback = new MetroFramework.Controls.MetroButton();
             this.txtPrno = new MetroFramework.Controls.MetroTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSp)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -93,7 +96,7 @@
             this.dgvSp.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvSp.RowTemplate.Height = 23;
             this.dgvSp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSp.Size = new System.Drawing.Size(621, 299);
+            this.dgvSp.Size = new System.Drawing.Size(653, 247);
             this.dgvSp.TabIndex = 1;
             this.dgvSp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSp_CellClick);
             // 
@@ -112,7 +115,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(197, 358);
+            this.label1.Location = new System.Drawing.Point(223, 305);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(215, 24);
             this.label1.TabIndex = 3;
@@ -276,18 +279,51 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.dgvSp);
             this.groupBox2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(46, 23);
+            this.groupBox2.Location = new System.Drawing.Point(23, 23);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(671, 398);
+            this.groupBox2.Size = new System.Drawing.Size(694, 347);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ERP 점유율 관리";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(917, 267);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(216, 12);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "https://github.com/Shin920/WizitERP";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Location = new System.Drawing.Point(953, 292);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(137, 12);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "another920@naver.com";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(994, 319);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(61, 12);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "2026.06.22";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1310, 434);
+            this.ClientSize = new System.Drawing.Size(1310, 387);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -300,6 +336,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -318,6 +355,9 @@
         private MetroFramework.Controls.MetroButton btnCancel;
         private MetroFramework.Controls.MetroTextBox txtPdno;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
 
