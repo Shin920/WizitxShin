@@ -67,6 +67,23 @@ namespace spwho1.DAC
             return dt;
         }
 
+        public int Kill_Process(int spID)
+        {
+            try
+            {
+                string sql = $"KILL {spID}";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("KILL 실패 : " + ex.Message);
+            }
+        }
+
 
     }
 }

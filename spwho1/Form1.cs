@@ -1,4 +1,5 @@
-﻿using spwho1.DAC;
+﻿using MetroFramework.Controls;
+using spwho1.DAC;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,11 +12,38 @@ using System.Windows.Forms;
 
 namespace spwho1
 {
+
+
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
+        //클릭 이벤트용 전역변수 추가
+        private Session selectedSession = null;
         public Form1()
         {
             InitializeComponent();
+            DefaultSet();
+        }
+
+        private void DefaultSet()
+        {
+            //btn Color
+            btnKill.UseCustomForeColor = true;
+            btnKill.ForeColor = Color.Red;
+
+            //Grid Set
+            dgvSp.BackgroundColor = Color.FromArgb(235, 240, 245);
+            //dgvSp.BorderStyle = BorderStyle.FixedSingle;
+
+            dgvSp.ColumnHeadersVisible = true;
+            dgvSp.RowHeadersVisible = false;
+
+            dgvSp.AllowUserToAddRows = false;
+            dgvSp.AllowUserToDeleteRows = false;
+            dgvSp.AllowUserToResizeRows = false;
+
+            dgvSp.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvSp.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSp.MultiSelect = false;
         }
 
         private void DataLoadSession()
@@ -104,6 +132,76 @@ namespace spwho1
                 {
                     row.DefaultCellStyle.BackColor = Color.Khaki;
                 }
+            }
+        }
+
+
+        private void dgvSp_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            SetSelectedSession(e.RowIndex);
+        }
+
+        private void SetSelectedSession(int rowIndex)
+        {
+            DataGridViewRow row = dgvSp.Rows[rowIndex];
+
+            selectedSession = new Session
+            {
+                SpID = Convert.ToInt32(row.Cells["SPID"].Value),
+                Status = row.Cells["Status"].Value?.ToString(),
+                Hostname = row.Cells["HostName"].Value?.ToString(),
+                EmpNo = row.Cells["EmpNo"].Value?.ToString(),
+                EmpName = row.Cells["EmpName"].Value?.ToString(),
+                Blkby = row.Cells["BlkBy"].Value?.ToString(),
+                Command = row.Cells["Command"].Value?.ToString()
+            };
+        }   
+
+       
+
+        private void btnKill_Click(object sender, EventArgs e)
+        {
+            if (selectedSession == null)
+            {
+                MessageBox.Show("종료할 세션을 선택하세요.");
+                return;
+            }
+
+            if (selectedSession.Command != null &&
+                selectedSession.Command.ToUpper().Contains("UPDATE"))
+            {
+                MessageBox.Show("UPDATE 작업 중인 세션은 종료할 수 없습니다.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                $"SPID {selectedSession.SpID} 세션을 종료하시겠습니까?",
+                "KILL 확인",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result != DialogResult.Yes)
+                return;
+
+            SpDAC dac = new SpDAC();
+
+            try
+            {
+                dac.Kill_Process(selectedSession.SpID);
+                MessageBox.Show("세션 종료 요청이 완료되었습니다.");
+
+                DataLoadSession();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                dac.Dispose();
             }
         }
     }
