@@ -100,6 +100,8 @@ namespace spwho1.DAC
 
                 tran = conn.BeginTransaction();
 
+                SetPshdmDeleteEnable(tran);
+
                 int affectedRows = 0;
 
                 string sql1 = "DELETE FROM T_PSHDM WHERE prno = @prno";
@@ -127,12 +129,21 @@ namespace spwho1.DAC
                     affectedRows += cmd.ExecuteNonQuery();
                 }
 
+                SetPshdmDeleteDisable(tran);
+
                 tran.Commit();
                 return affectedRows;
             }
             catch
             {
                 tran?.Rollback();
+
+                try
+                {
+                    SetPshdmDeleteDisable(null);
+                }
+                catch { }
+
                 throw;
             }
         }
@@ -152,6 +163,7 @@ namespace spwho1.DAC
                     conn.Open();
 
                 tran = conn.BeginTransaction();
+                SetPshdmDeleteEnable(tran);
 
                 int affectedRows = 0;
 
@@ -198,13 +210,43 @@ namespace spwho1.DAC
                     affectedRows += cmd.ExecuteNonQuery();
                 }
 
+                SetPshdmDeleteDisable(tran);
+
                 tran.Commit();
                 return affectedRows;
             }
             catch
             {
                 tran?.Rollback();
+
+                try
+                {
+                    SetPshdmDeleteDisable(null);
+                }
+                catch { }
+
                 throw;
+            }
+        }
+
+        // T_PSHDM 삭제 전 Allow
+        private void SetPshdmDeleteEnable(SqlTransaction tran = null)
+        {
+            string sql = "EXEC PSHDM_DD";
+
+            using (SqlCommand cmd = new SqlCommand(sql, conn, tran))
+            {
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        private void SetPshdmDeleteDisable(SqlTransaction tran = null)
+        {
+            string sql = "EXEC PSHDM_DE";
+
+            using (SqlCommand cmd = new SqlCommand(sql, conn, tran))
+            {
+                cmd.ExecuteNonQuery();
             }
         }
 

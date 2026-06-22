@@ -171,7 +171,7 @@ namespace spwho1
             }
 
             string command = selectedSession.Command?.ToUpper() ?? "";
-
+           
             if (command.Contains("UPDATE") ||
                 command.Contains("INSERT") ||
                 command.Contains("DELETE") ||
