@@ -182,7 +182,7 @@ namespace spwho1
             if (command.Contains("UPDATE") ||
                 command.Contains("INSERT") ||
                 command.Contains("DELETE") ||
-                command.Contains("MERGE"))
+                command.Contains("MERGE"))           
             {
                 MessageBox.Show("작업 중인 세션은 종료할 수 없습니다.");
                 return;
@@ -255,7 +255,7 @@ namespace spwho1
         {
             string pdno = txtPdno.Text.Trim();
 
-            if (pdno.Length != 11 || !pdno.All(char.IsDigit))
+            if (pdno.Length != 11 )
             {
                 MessageBox.Show("생산의뢰번호 11자리로 입력하세요.");
                 return;
