@@ -206,6 +206,7 @@ namespace spwho1
                 MessageBox.Show("세션 종료 요청이 완료되었습니다.");
 
                 DataLoadSession();
+                HighlightBlockingRows(); //색상 재설정
             }
             catch (Exception ex)
             {
