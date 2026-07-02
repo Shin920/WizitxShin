@@ -1,51 +1,154 @@
-# ERP Blocking Monitor
+# Wizit ERP Utility
 
-위지트 생산관리부의 ERP 사용 중 발생하는 반복적인 지연 및 버퍼링 현상에 대한 원인 파악을 지원하기 위해 개발한 SQL Server 모니터링 도구입니다.
+생산관리 ERP 운영 과정에서 반복적으로 발생하는 장애 및 운영 이슈를
+빠르게 해결하기 위해 개발한 **ERP 운영 지원 도구**입니다.
 
----
+본 프로그램은 SQL Server와 연동하여 운영자가 직접 데이터를 조회하고
+필요한 유지보수 작업을 수행할 수 있도록 구현하였습니다.
 
-## 📌 Key Features
+------------------------------------------------------------------------
 
-### Session Monitoring
+# 📌 Overview
 
-sp_who2 결과를 기반으로 현재 SQL Server 접속 세션 정보를 조회합니다.
+운영 중 자주 발생하는 생산관리 ERP 데이터 오류와 SQL Server 블로킹
+문제를 신속하게 처리하기 위한 관리자용 유틸리티입니다.
 
-### Employee Mapping
+주요 기능은 다음과 같습니다.
 
-PC HostName 끝 5자리 사번 정보를 기준으로 사원 마스터(HI230)와 연동하여 사용자명을 표시합니다.
+-   SQL Server 세션 모니터링
+-   Blocking Session 탐지
+-   KILL Process 지원
+-   공정진행표 발급 취소
+-   출고등록 데이터 초기화
+-   ERP 운영 데이터 유지보수
 
-### Blocking Session Detection
+------------------------------------------------------------------------
 
-BlkBy 값을 분석하여 블로킹 관계를 식별합니다.
+# 🚀 Key Features
 
-### Visual Highlight
+## 🔍 Session Monitoring
 
-다른 세션을 차단하고 있는 원인 세션은 Grid에서 빨간색으로 표시됩니다.
+SQL Server의 현재 접속 세션을 조회하여 운영 상태를 실시간으로
+확인합니다.
 
-### Lightweight Operation
+-   Session 조회
+-   로그인 계정 확인
+-   Host Name 확인
+-   실행 중인 Command 확인
+-   Blocking 여부 확인
 
-SQL Server 2000 환경을 고려하여 최소한의 조회 기능만 제공합니다.
+------------------------------------------------------------------------
 
-### Session Kill
+## 🚨 Blocking Detection
 
-DML(Data Manipulation Language)를 제외한 작업 세션을 종료할 수 있는 기능을 제공합니다.
+SQL Server Blocking 관계를 분석하여 문제 세션을 식별합니다.
 
----
+-   Blocking Session 식별
+-   Blocked Session 표시
+-   UI 색상 강조
+-   Blocking 관계 확인
 
-## 🖥️ Example
+------------------------------------------------------------------------
 
-| SPID | 사용자 | PC명 | 상태 |
-|------|--------|------|------|
-| 62 | 김성광 | DESKTOP-JCCAH | 🔴 Blocking |
-| 71 | 홍길동 | DESKTOP-ABC01 | Waiting |
+## ⚠ Process KILL
 
----
+관리자 권한에서 Blocking Session을 종료하여 ERP 응답 지연을 해소할 수
+있습니다.
 
-## 🚫 Not Supported
+> 운영 환경에서는 권한 정책에 따라 기능 비활성화가 필요할 수 있습니다.
 
-- Session Kill
-- SQL 실행
-- 데이터 수정
-- 관리자 기능
+기능
 
-세션 강제 종료(KILL)는 데이터 손상 및 업무 영향 가능성이 있으므로 제한된 기능으로만 수행합니다.
+-   KILL Process
+-   UPDATE / INSERT 작업 보호
+-   종료 전 사용자 확인
+
+------------------------------------------------------------------------
+
+## 📄 Process Sheet Cancel
+
+잘못 발급된 공정진행표를 취소할 수 있습니다.
+
+지원 기준
+
+-   생산의뢰번호(PDNO)
+-   제조번호(PRNO)
+
+관련 데이터를 일괄 삭제하여 재발급이 가능하도록 지원합니다.
+
+------------------------------------------------------------------------
+
+## 🔄 ERP Data Reset
+
+안산공정 ERP 출고등록 과정에서 누락된 데이터를 초기화하여 재처리할 수
+있도록 지원합니다.
+
+기능
+
+-   특정 컬럼 NULL 초기화
+-   ERP 재조회 가능
+-   운영 데이터 복구 지원
+
+------------------------------------------------------------------------
+
+# 🏗 System Architecture
+
+``` mermaid
+flowchart LR
+
+Operator --> Utility
+
+Utility --> SQLServer[(SQL Server)]
+
+SQLServer --> Session
+SQLServer --> ERPData
+
+Session --> Monitor
+Session --> Kill
+
+ERPData --> ProcessCancel
+ERPData --> DataReset
+```
+
+------------------------------------------------------------------------
+
+# 📁 Main Functions
+
+  기능                 설명
+  -------------------- ----------------------------
+  Session Monitoring   SQL Server 세션 조회
+  Blocking Detection   Blocking 관계 분석
+  KILL Process         Blocking Session 종료
+  Process Cancel       공정진행표 취소
+  Data Reset           ERP 출고등록 데이터 초기화
+
+------------------------------------------------------------------------
+
+# 🛠 Technology Stack
+
+-   C#
+-   .NET Framework WinForms
+-   SQL Server
+-   ADO.NET
+
+------------------------------------------------------------------------
+
+# ⭐ Technical Highlights
+
+-   SQL Server Session 모니터링
+-   Blocking 관계 시각화
+-   관리자용 KILL 기능
+-   생산 데이터 유지보수 기능
+-   ERP 운영 지원 도구
+-   UI 기반 운영 관리
+
+------------------------------------------------------------------------
+
+# 🎯 Development Purpose
+
+ERP 운영 중 발생하는 SQL Server 블로킹, 공정진행표 발급 오류 및 출고등록
+데이터 누락 문제를 신속하게 해결하기 위해 개발한 관리자용
+유틸리티입니다.
+
+운영자가 SQL을 직접 실행하지 않고도 GUI 환경에서 안전하게 유지보수
+작업을 수행할 수 있도록 구현하였습니다.
